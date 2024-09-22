@@ -1,5 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { Customer, MercadoPagoConfig, Payment } from 'mercadopago';
+import {
+  CardToken,
+  Customer,
+  CustomerCard,
+  MercadoPagoConfig,
+  Payment,
+} from 'mercadopago';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
