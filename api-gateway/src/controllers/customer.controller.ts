@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Inject } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Inject,
+  Put,
+  Param,
+} from '@nestjs/common';
 import { ClientProxy } from '@nestjs/microservices';
 import { Observable } from 'rxjs';
 
@@ -16,5 +24,16 @@ export class CustomerController {
   @Post()
   createCustomer(@Body() customerData: any): Observable<any> {
     return this.client.send({ cmd: 'create_customer' }, customerData);
+  }
+
+  @Put('/:customerId')
+  updateCustomer(
+    @Param('customerId') customerId: string,
+    @Body() customerData: any,
+  ): Observable<any> {
+    return this.client.send(
+      { cmd: 'update_customer' },
+      { customerId, customerData },
+    );
   }
 }

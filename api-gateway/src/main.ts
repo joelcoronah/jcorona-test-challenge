@@ -1,20 +1,8 @@
-import { Module } from '@nestjs/common';
-import { ClientsModule, Transport } from '@nestjs/microservices';
-import { CustomerController } from './controllers/customer.controller';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
 
-@Module({
-  imports: [
-    ClientsModule.register([
-      {
-        name: 'CUSTOMER_SERVICE',
-        transport: Transport.TCP,
-        options: {
-          host: 'localhost',
-          port: 3001, // Puerto del microservicio de clientes
-        },
-      },
-    ]),
-  ],
-  controllers: [CustomerController],
-})
-export class AppModule {}
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
+}
+bootstrap();
