@@ -9,10 +9,11 @@ async function bootstrap() {
       transport: Transport.TCP,
       options: {
         host: 'localhost',
-        port: 3001, // El puerto donde escucha el microservicio de clientes
+        port: 3001,
       },
     },
   );
+
   await app.listen();
   console.log('Customer microservice is running on port 3001');
 }

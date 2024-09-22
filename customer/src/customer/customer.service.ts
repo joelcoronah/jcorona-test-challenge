@@ -1,11 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {
-  CardToken,
-  Customer,
-  CustomerCard,
-  MercadoPagoConfig,
-  Payment,
-} from 'mercadopago';
+import { Customer, MercadoPagoConfig } from 'mercadopago';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -48,8 +42,6 @@ export class CustomerService {
       const response = await customers.create({ body: customerData });
       return response;
     } catch (error) {
-      console.log({ error });
-      console.log(error.cause);
       throw new Error(`Error creating customer: ${error.message}`);
     }
   }
@@ -75,8 +67,6 @@ export class CustomerService {
       });
       return response;
     } catch (error) {
-      console.log({ error });
-      console.log(error.cause);
       throw new Error(`Error updating customer: ${error.message}`);
     }
   }
