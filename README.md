@@ -1,34 +1,78 @@
-## BACKEND SKILLS ASSESSMENT PROJECT
+# Microservices Architecture - Customer & Payment System
 
-For this evaluation you will have to create one project with **TypeScript** a **Microservice** with **NestJS** framework
+This project is composed of three microservices built with NestJS that communicate with each other using TCP transport. An API Gateway is used to expose HTTP routes and handle communication between clients and microservices. Additionally, Swagger is implemented to document the HTTP endpoints.
 
-**It must be production quality according to your understanding: testing, readme.MD etc.**
+## Microservices:
 
-The project will do to the next way, will a web application that show a list of customer's registered in _Mercado Pago Sandbox_ and additional will register more customer's. You will need use the _SDK Mercado Pago_ to connect with the sandbox environment.
+1. API Gateway: Handles HTTP requests and routes them to the appropriate microservices.
 
-**Additional:** In this assessment we don't force to use a database, but if you want save the information using a database, it's perfect (TypeORM Integration).
+2. Customer Microservice: Manages customer-related operations (creating, updating, listing customers) using the Mercado Pago SDK.
 
-### Backend Application
+3. Payment Microservice: Handles payment processing for registered customers via the Mercado Pago platform.
 
-- Service to get customer's
-- Service to create a new customer
-- Service to update a customer
+## Requirements
 
-### Mercado Pago Sandbox
+- Node.js (>= 18.x)
+- NestJS Framework
+- Mercado Pago SDK
+- Docker (optional, for containerization)
 
-[https://www.mercadopago.com.mx/developers/en/docs/your-integrations/credentials](https://www.mercadopago.com.mx/developers/en/docs/your-integrations/credentials)
+## How to Run
 
-### Mercado pago SDK NodeJs
+1. Clone the repository and install dependencies
 
-[https://www.npmjs.com/package/mercadopago](https://www.npmjs.com/package/mercadopago)
+```bash
+git clone https://github.com/joelcoronah/jcorona-test-challenge.git
+cd jcorona-test-challenge
+```
 
-### Bonus -- EXECUTE A CHARGE
+2. Start each microservice:
 
-This is not required, it is just a bonus, if you have time go ahead.
-You can execute a charge to a customer registered into the list.
+```bash
+# API Gateway
+cd api-gateway
+npm install
+npm run start
 
-**Deadline**: We expect you to get back to us with the solution in 3 days. It won't be better if you delivery before, so if you finish early, improve your code. Finally, don't rush, if you need more time please ask us whenever you need.
+# Customer Microservice
+cd customer
+npm install
+npm run start
 
-Create a private project in GitHub and share with us your code.
+# Payment Microservice
+cd payment
+npm install
+npm run start
+```
 
-The repo should have your name, for example **"iramirez-test-challenge"**.
+3. Access Swagger documentation for each service:
+
+- API Gateway: `http://localhost:3000/api`
+- Customer Microservice: `http://localhost:3001/api`
+- Payment Microservice: `http://localhost:3002/api`
+
+### Available Endpoints
+
+#### 1. Get a List of customers
+
+- Endpoint: `/customers`
+- Method: `GET`
+- Description: Fetches a list of customers.
+
+#### 2. Create a customer
+
+- Endpoint: `/customers`
+- Method: `POST`
+- Description: Create a customer.
+
+#### 3. Update a customer
+
+- Endpoint: `/customers/:customerId`
+- Method: `PUT`
+- Description: Update a customer.
+
+#### 3. Create a payment
+
+- Endpoint: `/payments`
+- Method: `POST`
+- Description: Create a payment for a customer
