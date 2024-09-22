@@ -36,7 +36,7 @@ npm run start
 - Set the Mercado Pago access token in your environment.
 
 ```bash
-MERCADO_PAGO_ACCESS_TOKEN=your_access_token
+ACCESS_TOKEN=your_access_token
 ```
 
 ### Available Endpoints

@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+    container_name: api-gateway
+    volumes:
+      - ./api-gateway:/usr/src/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - customer-service
+      - payment-service
+    environment:
+      - NODE_ENV=production
+
+  customer-service:
+    build:
+      context: ./customer
+    container_name: customer-service
+    volumes:
+      - ./customer:/usr/src/app
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - ACCESS_TOKEN=${ACCESS_TOKEN}
+
+  payment-service:
+    build:
+      context: ./payment
+    container_name: payment-service
+    volumes:
+      - ./payment:/usr/src/app
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+      - ACCESS_TOKEN=${ACCESS_TOKEN}
+
+networks:
+  app-network:
+    driver: bridge

@@ -10,7 +10,7 @@ import { PaymentController } from './controllers/payment.controller';
         name: 'CUSTOMER_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
+          host: 'customer-service',
           port: 3001,
         },
       },
@@ -18,7 +18,7 @@ import { PaymentController } from './controllers/payment.controller';
         name: 'PAYMENT_SERVICE',
         transport: Transport.TCP,
         options: {
-          host: 'localhost',
+          host: 'payment-service',
           port: 3002,
         },
       },
