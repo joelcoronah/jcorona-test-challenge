@@ -28,28 +28,33 @@ cd jcorona-test-challenge
 
 2. Start each microservice:
 
+### Environment Variables
+
+- Set the Mercado Pago access token in your environment.
+
 ```bash
-# API Gateway
-cd api-gateway
-npm install
-npm run start
-
-# Customer Microservice
-cd customer
-npm install
-npm run start
-
-# Payment Microservice
-cd payment
-npm install
-npm run start
+ACCESS_TOKEN=your_access_token
 ```
 
-3. Access Swagger documentation for each service:
+### Run the entire app with docker:
+
+build the app,
+
+```bash
+docker-compose build
+```
+
+just run,
+
+```bash
+docker-compose up
+```
+
+now the API Gateway is running on `http://localhost:3000`
+
+3. Access Swagger documentation
 
 - API Gateway: `http://localhost:3000/api`
-- Customer Microservice: `http://localhost:3001/api`
-- Payment Microservice: `http://localhost:3002/api`
 
 ### Available Endpoints
 
